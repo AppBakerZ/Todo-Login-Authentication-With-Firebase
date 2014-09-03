@@ -11,18 +11,20 @@ define([
         collection : new Lists(),
         className: 'list',
         template: '',
+        subViews : [],
 
-        events: {
+    events: {
             'keypress #listTodo': 'addTodo'
 
         },
         initialize : function(){
             if(this.collection.length != 0){
-                var slef = this ;
+                var slef = this;
                 setTimeout(function(){
                     slef.collection.each(function(model){
                         var  todos = new Todo({model: model});
                         slef.$("#todo-list").append(todos.render().el);
+                        slef.subViews.push(todos);
                     });
                 }, 2000);
             }
@@ -32,6 +34,7 @@ define([
         addOne: function(todo) {
             var  todos = new Todo({model: todo});
             this.$("#todo-list").append(todos.render().el);
+            this.subViews.push(todos);
         },
 
 

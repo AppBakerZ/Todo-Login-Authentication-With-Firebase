@@ -27,11 +27,15 @@ define([
             'list' : 'list'
         },
         showView: function(view, className, isRender){
-            var header = new Header();
-
+            var header = new Header() ;
             if(this.currentView){
-                this.currentNav.remove();
+                if(this.currentView.subViews){
+                    _.each(this.currentView.subViews, function(subview){
+                        subview.remove();
+                    });
+                }
                 this.currentView.remove();
+                this.currentNav.remove();
             }
             if(!isRender){
                 $('.content').append(view.el);
@@ -41,10 +45,10 @@ define([
             }
             $('header').append(header.render().el)
              .find(className).addClass('active');
+
             this.currentNav = header;
             this.currentView = view;
         },
-
 
         home: function () {
             if(this.currentView && this.currentView.$el.hasClass('index') ) return;
