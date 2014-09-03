@@ -13,7 +13,7 @@ define([
         },
         render: function () {
             var  self = this;
-            $.get('../firebase_login/templates/header.htm' , function(template){
+            $.get('templates/header.htm' , function(template){
                 self.$el.html(template);
                 if(localStorage.getItem('login') !== "false") {
                     self.$('.home').addClass('hide');

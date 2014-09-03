@@ -8,7 +8,7 @@ define([
 
         render: function () {
             var  self = this;
-            $.get('../firebase_login/templates/index.htm' , function(template){
+            $.get('templates/index.htm' , function(template){
                 self.$el.html(template);
             });
             return this;

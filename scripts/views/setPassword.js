@@ -21,7 +21,7 @@ define([
 
         render: function () {
             var self = this;
-            $.get('../firebase_login/templates/setPassword.htm' , function(template){
+            $.get('templates/setPassword.htm' , function(template){
                 self.template = _.template(template);
                 self.$el.html(self.template());
             });

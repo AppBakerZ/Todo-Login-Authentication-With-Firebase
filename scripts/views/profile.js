@@ -17,11 +17,11 @@ define([
         initialize : function(){
             var self = this;
 
-            $.get('../firebase_login/templates/profile.htm' , function(template){
+            $.get('templates/profile.htm' , function(template){
                 self.template = _.template(template);
 
             });
-            this.$el.append("<img class='loading' src='loading.gif'>");
+            this.$el.append("<img class='loading' src='img/loading.gif'>");
 //            this.listenTo(this.collection, 'sync', this.render);
             this.render()
         },

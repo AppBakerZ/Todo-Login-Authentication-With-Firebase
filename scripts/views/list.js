@@ -37,7 +37,7 @@ define([
 
         render: function () {
             var self = this;
-            $.get('../firebase_login/templates/list.htm' , function(template){
+            $.get('templates/list.htm' , function(template){
                 self.template = _.template(template);
                 self.$el.html(self.template());
             });

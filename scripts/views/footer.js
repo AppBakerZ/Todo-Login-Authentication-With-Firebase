@@ -9,7 +9,7 @@ define([
 
         render: function () {
             var  self = this;
-            $.get('../firebase_login/templates/footer.htm' , function(template){
+            $.get('templates/footer.htm' , function(template){
                 self.$el.html(template);
             });            return this;
         }

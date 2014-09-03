@@ -30,7 +30,7 @@ define([
                 $total = $('.heading').find('span.total');
 
             $total.text('Total Items : ' + this.collection.length);
-            $.get('../firebase_login/templates/todos.htm' , function(template){
+            $.get('templates/todos.htm' , function(template){
                 self.template = _.template(template);
                 self.$el.html(self.template(self.model.toJSON()));
                 self.check();
