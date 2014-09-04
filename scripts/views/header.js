@@ -11,25 +11,35 @@ define([
         events: {
             'click li.logout': 'logout'
         },
+        initialize: function () {
+           App.Router.listenTo(App.Router, 'route', this.changeTemplate);
+        },
+
         render: function () {
             var  self = this;
             $.get('templates/header.htm' , function(template){
                 self.$el.html(template);
-                if(localStorage.getItem('login') !== "false") {
-                    self.$('.home').addClass('hide');
-                    self.$('.signup').addClass('hide');
-                    self.$('.login').addClass('hide');
-                    self.$('.list').removeClass('hide');
-                    self.$('.logout').removeClass('hide');
-                    self.$('.setPassword ').removeClass('hide');
-                    self.$('.profile ').removeClass('hide');
-                }
             });
             return this;
         },
 
+        changeTemplate:function(route){
+           var  $header = $('header');
+            setTimeout(function(){
+                if(localStorage.getItem('login') === "true") {
+                self.$('ul.user').removeClass('hide');
+                self.$('ul.public').addClass('hide');
+            }
+            else{
+                self.$('ul.user').addClass('hide');
+                self.$('ul.public').removeClass('hide');
+            }
+            $header.find('.active').removeClass('active');
+                $header.find('.' + route).addClass('active');
+            }, 300);
+        },
+
         logout : function(e) {
-            console.log('logout');
             auth.logout();
             localStorage.setItem('login', false);
             localStorage.removeItem('email');

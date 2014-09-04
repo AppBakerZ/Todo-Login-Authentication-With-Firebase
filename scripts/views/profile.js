@@ -5,9 +5,9 @@ define([
 
 ],function(Backbone, Users ) {
 
-    var Member = Backbone.View.extend({
+    var Profile = Backbone.View.extend({
         collection : new Users(),
-        className: 'member',
+        className: 'profile',
         template: '',
 
         events: {
@@ -55,6 +55,6 @@ define([
         }
     });
 
-    return Member;
+    return Profile;
 
 });
