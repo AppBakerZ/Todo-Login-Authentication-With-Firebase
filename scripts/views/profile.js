@@ -22,7 +22,7 @@ define([
 
             });
             this.$el.append("<img class='loading' src='img/loading.gif'>");
-//            this.listenTo(this.collection, 'sync', this.render);
+            this.listenTo(this.collection, 'change', this.render);
             this.render()
         },
 
@@ -48,7 +48,6 @@ define([
                 age : age.val()
 
         });
-            this.listenTo(this.collection, 'change', this.render);
             this.$('button i').addClass('hides');
 
             e.preventDefault();
